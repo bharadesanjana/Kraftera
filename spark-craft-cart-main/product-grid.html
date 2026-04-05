@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kratera Product Grid</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .product-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1rem;
+    text-align: center;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+
+  .product-img {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-img img {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .product-card h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0.5rem 0 0.75rem 0;
+    line-height: 1.3;
+    min-height: 2.6rem;
+  }
+
+  .product-card p {
+    margin: 0.4rem 0;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  .product-card .price,
+  .product-card .quantity {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+  }
+
+  .product-card .total {
+    font-weight: bold;
+    color: #111;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+  }
+</style>
+</head>
+<body>
+
+<section>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Big pendant">
+      </div>
+      <h3>Raisin Big pendant</h3>
+      <p class="price"><span>Price:</span> <span>₹200</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>10</span></p>
+      <p class="total">Total: 2000/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Saree pins">
+      </div>
+      <h3>Saree pins</h3>
+      <p class="price"><span>Price:</span> <span>₹40</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>9</span></p>
+      <p class="total">Total: 360/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Silk thread pair bangles (single)">
+      </div>
+      <h3>Silk thread pair bangles (single)</h3>
+      <p class="price"><span>Price:</span> <span>₹200</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>9</span></p>
+      <p class="total">Total: 1800/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Gold Bangles (set)">
+      </div>
+      <h3>Gold Bangles (set)</h3>
+      <p class="price"><span>Price:</span> <span>₹400</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>1</span></p>
+      <p class="total">Total: 400/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Green Bangles (set)">
+      </div>
+      <h3>Green Bangles (set)</h3>
+      <p class="price"><span>Price:</span> <span>₹400</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>1</span></p>
+      <p class="total">Total: 400/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Ash Bangles (set)">
+      </div>
+      <h3>Ash Bangles (set)</h3>
+      <p class="price"><span>Price:</span> <span>₹400</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>1</span></p>
+      <p class="total">Total: 400/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Fancy Chains Neck chains">
+      </div>
+      <h3>Fancy Chains Neck chains</h3>
+      <p class="price"><span>Price:</span> <span>₹150</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>13</span></p>
+      <p class="total">Total: 1950/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Studs">
+      </div>
+      <h3>Raisin Studs</h3>
+      <p class="price"><span>Price:</span> <span>₹40</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>41</span></p>
+      <p class="total">Total: 1640/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Charms Bracelets">
+      </div>
+      <h3>Charms Bracelets</h3>
+      <p class="price"><span>Price:</span> <span>₹150</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>6</span></p>
+      <p class="total">Total: 900/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Mandala key chains">
+      </div>
+      <h3>Mandala key chains</h3>
+      <p class="price"><span>Price:</span> <span>₹40</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>17</span></p>
+      <p class="total">Total: 680/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Doll mop Black key chains">
+      </div>
+      <h3>Doll mop Black key chains</h3>
+      <p class="price"><span>Price:</span> <span>₹40</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>15</span></p>
+      <p class="total">Total: 600/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Doll DTP Transparent key chains">
+      </div>
+      <h3>Doll DTP Transparent key chains</h3>
+      <p class="price"><span>Price:</span> <span>₹60</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>22</span></p>
+      <p class="total">Total: 1320/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Terracotta chains">
+      </div>
+      <h3>Terracotta chains</h3>
+      <p class="price"><span>Price:</span> <span>₹32</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>300</span></p>
+      <p class="total">Total: 9600/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Deepa Big Size (pair)">
+      </div>
+      <h3>Raisin Deepa Big Size (pair)</h3>
+      <p class="price"><span>Price:</span> <span>₹300</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>3</span></p>
+      <p class="total">Total: 900/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Deepa Small (pair)">
+      </div>
+      <h3>Raisin Deepa Small (pair)</h3>
+      <p class="price"><span>Price:</span> <span>₹200</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>3</span></p>
+      <p class="total">Total: 600/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Clay Deepas (pair)">
+      </div>
+      <h3>Clay Deepas (pair)</h3>
+      <p class="price"><span>Price:</span> <span>₹400</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>2</span></p>
+      <p class="total">Total: 800/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Clay key chains">
+      </div>
+      <h3>Clay key chains</h3>
+      <p class="price"><span>Price:</span> <span>₹45</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>40</span></p>
+      <p class="total">Total: 1800/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Book Marks">
+      </div>
+      <h3>Book Marks</h3>
+      <p class="price"><span>Price:</span> <span>₹80</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>6</span></p>
+      <p class="total">Total: 480/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Combs">
+      </div>
+      <h3>Raisin Combs</h3>
+      <p class="price"><span>Price:</span> <span>₹100</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>6</span></p>
+      <p class="total">Total: 600/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Wall Hangings MDF">
+      </div>
+      <h3>Wall Hangings MDF</h3>
+      <p class="price"><span>Price:</span> <span>₹300</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>5</span></p>
+      <p class="total">Total: 1500/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Crystal Bracelets">
+      </div>
+      <h3>Crystal Bracelets</h3>
+      <p class="price"><span>Price:</span> <span>₹300</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>18</span></p>
+      <p class="total">Total: 5400/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Thread key chain">
+      </div>
+      <h3>Thread key chain</h3>
+      <p class="price"><span>Price:</span> <span>₹120</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>7</span></p>
+      <p class="total">Total: 840/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Bracelets">
+      </div>
+      <h3>Raisin Bracelets</h3>
+      <p class="price"><span>Price:</span> <span>₹150</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>8</span></p>
+      <p class="total">Total: 1200/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Small pendant chain (Neck chain)">
+      </div>
+      <h3>Raisin Small pendant chain (Neck chain)</h3>
+      <p class="price"><span>Price:</span> <span>₹180</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>10</span></p>
+      <p class="total">Total: 1800/-</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="placeholder.jpg" alt="Raisin Chandbali earrings">
+      </div>
+      <h3>Raisin Chandbali earrings</h3>
+      <p class="price"><span>Price:</span> <span>₹300</span></p>
+      <p class="quantity"><span>Quantity:</span> <span>13</span></p>
+      <p class="total">Total: 3900/-</p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
