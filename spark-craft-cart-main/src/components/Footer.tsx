@@ -87,8 +87,11 @@ const Footer = () => (
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="mt-10 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-muted-foreground font-body">
-        <span>© {new Date().getFullYear()} Kraftera. All rights reserved.</span>
+      <div className="mt-10 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-body">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+          <span>© {new Date().getFullYear()} Kraftera. All rights reserved.</span>
+          <Link to="/admin" className="hover:text-foreground transition-colors border-b border-transparent hover:border-muted-foreground/30 pb-0.5">Admin Portal</Link>
+        </div>
         <span className="tracking-wide">Handcrafted with ❤️ in India</span>
       </div>
     </div>
