@@ -43,7 +43,8 @@ export const api = {
     try {
       const res = await fetch(`${API_BASE}/categories`);
       if (!res.ok) throw new Error('Failed to fetch categories');
-      return await res.json();
+      const cats = await res.json();
+      return cats.length > 0 ? cats : mockCategories;
     } catch (e) {
       console.error('❌ getCategories Error:', e);
       return mockCategories; // Fallback to mock if API fails
