@@ -8,6 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { Product } from './models/Product.js';
+import { Category } from './models/Category.js';
 import { User } from './models/User.js';
 
 dotenv.config();
@@ -19,6 +20,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 // Dynamically determine base URL for image serving
 const BASE_URL = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+console.log(`🌐 Base URL configured as: ${BASE_URL}`);
 
 // Ensure uploads dir
 if (!fs.existsSync(path.join(__dirname, 'uploads'))) {
@@ -103,6 +105,34 @@ app.post('/api/login', async (req, res) => {
     userObj.id = userObj._id.toString(); // Map _id to id for frontend
     res.json(userObj);
   } catch (err) {
+    console.error('❌ Login Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// --- CATEGORIES ---
+app.get('/api/categories', async (req, res) => {
+  try {
+    const categories = await Category.find();
+    const mapped = categories.map(c => ({
+      ...c.toObject(),
+      id: c._id.toString()
+    }));
+    res.json(mapped);
+  } catch (err) {
+    console.error('❌ GET Categories Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/categories', async (req, res) => {
+  try {
+    const { name, slug, description } = req.body;
+    const newCat = new Category({ name, slug: slug || name.toLowerCase().replace(/\s+/g, '-'), description });
+    await newCat.save();
+    res.status(201).json({ ...newCat.toObject(), id: newCat._id.toString() });
+  } catch (err) {
+    console.error('❌ POST Category Error:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -118,6 +148,7 @@ app.get('/api/products', async (req, res) => {
     }));
     res.json(mapped);
   } catch (err) {
+    console.error('❌ GET Products Error:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -157,6 +188,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     await newProduct.save();
     res.status(201).json({ ...newProduct.toObject(), id: newProduct._id.toString() });
   } catch (err) {
+    console.error('❌ POST Product Error:', err);
     res.status(500).json({ error: err.message });
   }
 });

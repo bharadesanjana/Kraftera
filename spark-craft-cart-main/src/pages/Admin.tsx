@@ -259,7 +259,10 @@ const AdminDashboard = () => {
       setEditingProduct(null);
       setScreen('manage-products');
       loadData();
-    } catch { toast.error('Failed to save product'); }
+    } catch (e: any) {
+      console.error('❌ Save Product Error:', e);
+      toast.error(`Failed to save product: ${e.message || 'Unknown error'}`);
+    }
   };
 
   const handleDelete = async (id: string) => {
@@ -274,11 +277,18 @@ const AdminDashboard = () => {
     loadData();
   };
 
-  const handleCreateCategory = () => {
-    // Categories are stored in mock-data.ts; show a toast with instructions
-    // In a real backend this would POST to /api/categories
-    toast.info(`Category "${newCat.name}" — To persist, add it to mock-data.ts or connect a /api/categories endpoint.`);
-    setNewCat({ name: '', description: '', slug: '' });
+  const handleCreateCategory = async () => {
+    try {
+      if (!newCat.name) return toast.error('Category name is required');
+      await api.createCategory(newCat);
+      toast.success(`Category "${newCat.name}" created successfully ✅`);
+      setNewCat({ name: '', description: '', slug: '' });
+      loadData();
+      setScreen('home');
+    } catch (e: any) {
+      console.error('❌ Create Category Error:', e);
+      toast.error(`Failed to create category: ${e.message}`);
+    }
   };
 
   const sidebarItems = [

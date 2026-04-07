@@ -37,7 +37,27 @@ export const api = {
   },
 
   async getCategories(): Promise<Category[]> {
-    return mockCategories;
+    try {
+      const res = await fetch(`${API_BASE}/categories`);
+      if (!res.ok) throw new Error('Failed to fetch categories');
+      return await res.json();
+    } catch (e) {
+      console.error('❌ getCategories Error:', e);
+      return mockCategories; // Fallback to mock if API fails
+    }
+  },
+
+  async createCategory(data: Partial<Category>): Promise<Category> {
+    const res = await fetch(`${API_BASE}/categories`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) {
+      const errorMsg = await res.text();
+      throw new Error(errorMsg || 'Failed to create category');
+    }
+    return await res.json();
   },
 
   // Admin
@@ -61,7 +81,11 @@ export const api = {
       method: 'POST',
       body: formData
     });
-    if (!res.ok) throw new Error('Failed to create');
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error('❌ API createProduct failed:', errorText);
+      throw new Error(`Failed to create product: ${res.statusText}`);
+    }
     return await res.json();
   },
 
