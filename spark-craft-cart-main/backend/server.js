@@ -33,8 +33,15 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('✅ MongoDB connected to Atlas'))
-  .catch(err => console.error('❌ MongoDB Connection Error:', err));
+  .then(() => {
+    console.log('✅ MongoDB connected to Atlas');
+    console.log(`📡 Database Name: ${mongoose.connection.name}`);
+    console.log(`📁 Collections: ${Object.keys(mongoose.connection.collections).join(', ')}`);
+  })
+  .catch(err => {
+    console.error('❌ MongoDB Connection Error:', err);
+    console.log('💡 TIP: Check your MONGODB_URI and IP Whitelist on MongoDB Atlas.');
+  });
 
 // Multer setup
 const storage = multer.diskStorage({

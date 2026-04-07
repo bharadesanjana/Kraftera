@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { User } from '@/lib/types';
+import { API_BASE } from '@/lib/api';
 
 interface AuthContextType {
   user: User | null;
@@ -21,7 +22,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = useCallback(async (email: string, password: string): Promise<boolean> => {
     try {
-      const res = await fetch('http://localhost:5000/api/login', {
+      const res = await fetch(`${API_BASE}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -40,7 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = useCallback(async (name: string, email: string, username: string, password: string, phone: string, address: string): Promise<boolean> => {
     try {
-      const res = await fetch('http://localhost:5000/api/signup', {
+      const res = await fetch(`${API_BASE}/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, username, password, phone, address })

@@ -1,7 +1,10 @@
 import { Product, Category, Order } from './types';
 import { mockCategories, mockOrders } from './mock-data';
 
-const API_BASE = 'https://kraftera.onrender.com/api';
+// Dynamic configuration for API base URL
+export const API_BASE = (import.meta as any).env?.VITE_API_URL || 'https://kraftera.onrender.com/api';
+console.log(`🌐 Frontend API_BASE initialized as: ${API_BASE}`);
+
 let ordersDb: Order[] = [...mockOrders]; // Keeping orders mock for now
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
 
