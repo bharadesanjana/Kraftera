@@ -86,8 +86,14 @@ export const api = {
     });
     if (!res.ok) {
       const errorText = await res.text();
+      let msg = res.statusText;
+      try {
+        const parsed = JSON.parse(errorText);
+        msg = parsed.error || parsed.message || errorText;
+      } catch { msg = errorText || res.statusText || 'Unknown Server Error'; }
+      
       console.error('❌ API createProduct failed:', errorText);
-      throw new Error(`Failed to create product: ${res.statusText}`);
+      throw new Error(`Failed to create product: ${msg}`);
     }
     return await res.json();
   },
